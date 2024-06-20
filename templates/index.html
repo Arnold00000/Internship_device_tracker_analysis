@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TAC Predictor</title>
+</head>
+
+<body>
+    <div>
+        <h2>TAC Predictor</h2>
+        <form method="POST" action="/predict">
+            <label for="tac">Enter TAC:</label>
+            <input type="text" id="tac" name="tac" required>
+            <button type="submit">Predict</button>
+        </form>
+        {% if prediction %}
+        <h3>Prediction:</h3>
+        <p>{{ prediction }}</p>
+        {% endif %}
+        {% if device_info %}
+        <h3>Device Information:</h3>
+        <ul>
+            <li>TAC: {{ device_info['tac'] }}</li>
+            <li>Manufacturer: {{ device_info['manufacturer'] }}</li>
+            <li>Model Name: {{ device_info['modelName'] }}</li>
+            <li>Allocation Date: {{ device_info['allocationDate'] }}</li>
+            <li>Device Type: {{ device_info['deviceType'] }}</li>
+            <li>Allocation Year: {{ device_info['allocationYear'] }}</li>
+            <li>Number of Bands: {{ device_info['numBands'] }}</li>
+            <li>Band Details: {{ device_info['bandDetails'] }}</li>
+        </ul>
+        {% endif %}
+        {% if error %}
+        <p style="color:red">{{ error }}</p>
+        {% endif %}
+    </div>
+</body>
+
+</html>
